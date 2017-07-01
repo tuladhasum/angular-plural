@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html ng-app="eventsApp">
+
+<head>
+  <meta charset="utf-8">
+  <title>Event Registration</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <style media="screen">
+    input.ng-invalid.ng-dirty {background-color: pink;}
+  </style>
+  <!-- <link rel="stylesheet" href="/css/app.css"> -->
+  <script src="https://use.fontawesome.com/448d1d68a9.js"></script>
+</head>
+
+<body ng-cloak>
+
+<div ng-include="'navigation.html'"> </div>
+  <div class="container">
+    <!-- EditEventController -->
+    <div ng-controller="EditEventController">
+      <h3>New Event</h3>
+      <hr>
+      <form name="newEventForm">
+
+        <div class="form-group row">
+          <label for="eventNametxt" class="col-2 col-form-label">Event Name: </label>
+          <div class="col-10">
+            <input
+            required
+              class="form-control"
+              type="text"
+              id="eventNametxt"
+              ng-model="event.name"
+              placeholder="Name of the event...">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="eventDatetxt" class="col-2 col-form-label">Event Date:</label>
+          <div class="col-10">
+            <input
+            required
+            class="form-control"
+            ng-pattern="/\d\d/\d\d/\d\d\d\d/"
+            type="text"
+            value=""
+            placeholder="formal (mm/dd/yyy)..."
+            ng-model="event.date"
+            id="eventDatetxt">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="eventTimetxt" class="col-2 col-form-label">Event Time:</label>
+          <div class="col-10">
+            <input
+            class="form-control"
+            type="time"
+            placeholder="start and end time.."
+            ng-model="event.time"
+            id="eventTimetxt">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="eventAddress" class="col-2 col-form-label">Event Location:</label>
+          <div class="col-10">
+            <div class="row">
+              <div class="col-12">
+                <input
+                class="form-control"
+                type="text"
+                placeholder="Address of event.."
+                ng-model="event.location.address"
+                id="eventAddress">
+              </div>
+              <div class="col-6">
+                <input
+                class="form-control"
+                type="text"
+                placeholder="City.."
+                ng-model="event.location.city"
+                id="eventCity">
+              </div>
+              <div class="col-6">
+                <input
+                class="form-control"
+                type="text"
+                placeholder="State.."
+                ng-model="event.location.state"
+                id="eventState">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="eventImage" class="col-2 col-form-label">Image: </label>
+          <div class="col-10">
+            <input
+            class="form-control"
+            type="url"
+            id="eventImage"
+            ng-model="event.imageUrl"
+            placeholder="Url of Image...">
+          </div>
+          <img ng-src="{{event.imageUrl}}" src="" />
+        </div>
+
+        <button type="submit"
+        ng-disabled="newEventForm.$invalid"
+        ng-click="saveEvent(event,newEventForm)"
+        class="btn btn-primary">Save</button>
+        <button type="button" ng-click="cancelEdit()" class="btn btn-default">Cancel</button>
+      </form>
+<pre> {{event | json}}</pre>
+</div>
+  </div>
+
+  <!-- <script src="/lib/jquery.min.js" charset="utf-8"></script> -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="/lib/underscore-1.4.4.min.js" charset="utf-8"></script>
+  <!-- <script src="/lib/bootstrap.min.js" charset="utf-8"></script> -->
+  <script src="/lib/angular/angular.js" charset="utf-8"></script>
+  <script src="/lib/angular/angular-sanitize.js" charset="utf-8"></script>
+  <script src="/js/app.js" charset="utf-8"></script>
+  <script src="/js/controllers/EventController.js" charset="utf-8"></script>
+  <script src="/js/controllers/EditEventController.js" charset="utf-8"></script>
+  <script src="/js/filters.js" charset="utf-8"></script>
+</body>
+
+</html>

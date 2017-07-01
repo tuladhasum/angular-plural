@@ -1,5 +1,11 @@
+[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{
+  display: none;
+}
+
+
+
 /* app css stylesheet */
-.hoverwell:hover {
+/*.hoverwell:hover {
   background-color: #52575c;
   cursor: pointer;
 }
@@ -75,3 +81,4 @@ select, textarea {
     left: 209px;
     background-color: #272b30;
 }
+*/

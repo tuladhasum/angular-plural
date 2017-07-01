@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="eventsApp">
+
+<head>
+  <meta charset="utf-8">
+  <title>Event Registration</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <style media="screen">
+    input.ng-invalid.ng-dirty {
+      background-color: pink;
+    }
+  </style>
+  <!-- <link rel="stylesheet" href="/css/app.css"> -->
+  <script src="https://use.fontawesome.com/448d1d68a9.js"></script>
+</head>
+
+<body ng-cloak>
+
+  <div ng-include="'navigation.html'"> </div>
+  <div class="container">
+    <div class="" ng-controller="EditProfileController">
+      <form name="profileForm">
+        <div class="row-fluid">
+          <div class="span3">
+            <img ng-src="{{getGravatarUrl(user.emailAddress)}}" />
+          </div>
+          <div class="span3">
+            <fieldset>
+              <label for="userName">User Name:</label>
+              <input
+              focus
+              id="userName"
+              required
+              ng-pattern="/^[-A-Za-z0-9]{2,20}$/"
+              type="text"
+              placeholder="Username"
+              ng-model="user.userName" />
+              <label for="password">Password:</label>
+              <input
+              id="password"
+              required
+              type="password"
+              placeholder="Password"
+              ng-model="user.password" />
+            </fieldset>
+            <div style="margin-top:15px">
+              <fieldset>
+                <label for="name">Name:</label>
+                <input
+                id="name"
+                type="text"
+                placeholder="Name"
+                ng-model="user.name" />
+                <label for="emailAddress">Email Address:</label>
+                <input
+                id="emailAddress"
+                type="email"
+                placeholder="Email Address"
+                ng-model="user.emailAddress" />
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="row-fluid">
+          <div class="span6 offset3">
+            <label for="bio">Bio:</label>
+            <textarea
+            id="bio"
+            rows="6"
+            style="width:97%; color:#52575c"
+            placeholder="Bio"
+            ng-model="user.bio"></textarea>
+          </div>
+        </div>
+        <div class="row-fluid">
+          <div class="span6 offset3">
+            <div class="pull-left"><span class="btn">Cancel</span></div>
+            <div class="pull-right"><button type="submit" class="btn btn-primary">Save</button></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="/lib/underscore-1.4.4.min.js" charset="utf-8"></script>
+  <script src="/lib/angular/angular.js" charset="utf-8"></script>
+  <script src="/lib/angular/angular-sanitize.js" charset="utf-8"></script>
+  <script src="/js/app.js" charset="utf-8"></script>
+  <script src="/js/controllers/EditProfileController.js" charset="utf-8"></script>
+  <script src="/js/services/GravatarUrlBuilder.js" charset="utf-8"></script>
+  <script src="/js/filters.js" charset="utf-8"></script>
+</body>
+
+</html>

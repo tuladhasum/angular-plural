@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-app="eventsApp">
+
+<head>
+  <meta charset="utf-8">
+  <title>Event Registration</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="/css/app.css"> -->
+  <script src="https://use.fontawesome.com/448d1d68a9.js"></script>
+</head>
+
+<body ng-cloak>
+
+<div ng-include="'navigation.html'"> </div>
+<div class="container">
+    <div ng-controller="EventController">
+      <h3>Annual Google Conference</h3>
+      <div class="card">
+        <img class="card-img-top figure-img img-fluid rounded" ng-src="{{event.imageUrl}}" alt="{{event.name}}">
+        <div class="card-block">
+          <h4 class="card-title" ng-bind-template="{{event.name | uppercase}}"></h4>
+          <h6 class="card-subtitle mb-2 text-muted">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            {{event.date | date:'mediumDate'}} {{event.time}} |
+            {{34|currency}}
+          </h6>
+
+          <p class="card-text">
+            <address>
+              <strong><i class="fa fa-map-marker" aria-hidden="true"></i> Address:</strong></br>
+              {{event.location.address}}<br/>
+              {{event.location.city}}, {{event.location.state}}
+            </address>
+          </p>
+        </div>
+        </div>
+
+
+
+        <br/>
+        <h4>Featured Session</h4>
+        Order by:
+        <select class="" ng-model="sortorder">
+          <option selected value="name">Name</option>
+          <option value="-upVoteCount">Vote Count</option>
+        </select>
+
+        Show:
+        <select class="" ng-model="query.level">
+          <option value="" selected>All</option>
+          <option value="beginners">Introductory</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+
+        <div class="list-group">
+
+          <div ng-repeat="session in event.sessions | orderBy:sortorder | limitTo:limitVal | filter:query" class="list-group-item  flex-column align-items-start">
+
+            <div class="d-flex flex-row">
+              <div class="p-2">
+                <div class="votingButton" ng-click="upVoteSession(session)">
+                  <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                </div>
+                <div class="badge badge-default">
+                  <div class="">{{session.upVoteCount}} </div>
+                </div>
+                <div class="votingButton" ng-click="downVoteSession(session)">
+                  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                </div>
+              </div>
+
+              <div class="p-2">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{{session.name}}</h5>
+                  <small class="text-muted"><i class="fa fa-clock-o" aria-hidden="true"></i> Duration: {{session.duration | durations}}</small>
+                </div>
+                <p class="mb-1">{{session.abstract}}</p>
+                <p class="mb-1">Level: {{session.level}}</p>
+                <small class="text-muted"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Presented by {{session.creatorName}}</small>
+              </div>
+
+            </div>
+
+          </div>
+          Total event {{event.sessions.length}}
+
+        </div>
+
+        <div class="card" ng-hide="true">
+          <div ng-bind-html="snippet"></div>
+          <h2  ng-style="mystyle" ng-show="boolValue">Show This</h2>
+          <h2  ng-class="myclass" ng-show="boolValue">Show This</h2>
+          <h2 ng-hide="boolValue">Hide This</h2>
+          <div ng-non-bindable>{{1+2}} </div>
+          <button type="button" name="button" class="btn" ng-disabled="buttonDisabled">Directive Button</button>
+        </div>
+
+    </div>
+  </div>
+
+  <!-- <script src="/lib/jquery.min.js" charset="utf-8"></script> -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="/lib/underscore-1.4.4.min.js" charset="utf-8"></script>
+  <!-- <script src="/lib/bootstrap.min.js" charset="utf-8"></script> -->
+  <script src="/lib/angular/angular.js" charset="utf-8"></script>
+  <script src="/lib/angular/angular-resource.js" charset="utf-8"></script>
+  <script src="/lib/angular/angular-sanitize.js" charset="utf-8"></script>
+  <script src="/js/app.js" charset="utf-8"></script>
+  <script src="/js/controllers/EventController.js" charset="utf-8"></script>
+  <script src="/js/services/EventData.js" charset="utf-8"></script>
+  <script src="/js/filters.js" charset="utf-8"></script>
+</body>
+
+</html>

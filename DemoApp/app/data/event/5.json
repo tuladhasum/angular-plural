@@ -1,0 +1,44 @@
+{
+  "name": "Angular Boot Camp",
+  "date": 1359781015626,
+  "time": "10:30 am",
+  "location": {
+    "address": "Google headquaters",
+    "city": "Fargo",
+    "state": "ND"
+  },
+  "imageUrl": "/img/angularjs-logo.png",
+  "sessions": [{
+      "name": "Morning session Apple Computer",
+      "creatorName": "Steve Jobs",
+      "duration": 1,
+      "level": "Beginners",
+      "abstract": "In this session you will lean the basics of using macs and iphones. A free wifi is provided",
+      "upVoteCount": 0
+    },
+    {
+      "name": "Afternoon session Microsoft",
+      "creatorName": "Bill Gates",
+      "duration": 3,
+      "level": "Intermediate",
+      "abstract": "In this session Bill Gates will take you through the advantage of using Windows",
+      "upVoteCount": 0
+    },
+    {
+      "name": "Evening session Google",
+      "creatorName": "Larry Page & Sergey Bin",
+      "duration": 4,
+      "level": "Advanced",
+      "abstract": "You will learn an advanced techniques of using google search for your research",
+      "upVoteCount": 0
+    },
+    {
+      "name": "Introductory session with Amazon",
+      "creatorName": "Jeff Bezo",
+      "duration": 2,
+      "level": "Advanced",
+      "abstract": "In this course you will learn the backend functioning behind the most popular online store on the planet.",
+      "upVoteCount": 0
+    }
+  ]
+}
